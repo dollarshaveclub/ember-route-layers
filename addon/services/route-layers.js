@@ -1,28 +1,32 @@
 import Ember from 'ember';
 
-export default Ember.Service.extend({
+var stack = [];
 
-  routeLayerExitPointStack: [],
+export default Ember.Service.extend({
 
   push: function (transition) {
 
     var routeLayer = transition.handlerInfos.get('lastObject.handler.routeLayer');
-    var stack = this.get('routeLayerExitPointStack');
     var exitPoint = {
       routeLayer: routeLayer,
       transition: transition,
     };
 
-    // Transition within the same route layer: remove previous exit point
-    if (stack[0] && stack[0].routeLayer === routeLayer) stack.shift();
+    if (routeLayer === 'default') stack.length = 0;
 
-    stack.unshift(exitPoint);
+    // Transition to layer in stack: remove it and any above
+    for (var i = 0; i < stack.length; i++) {
+      if (stack[i].routeLayer === routeLayer) {
+        stack.length = i;
+      }
+    }
+
+    stack.push(exitPoint);
   },
 
   pop: function () {
-    var stack = this.get('routeLayerExitPointStack');
-    stack.shift(); // discard
-    return stack.shift();
+    stack.pop(); // discard
+    return stack.pop();
   }
 
 });
