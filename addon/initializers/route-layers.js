@@ -7,7 +7,7 @@ export function initialize (container, application) {
 
     routeLayer: 'default',
 
-    beforeModel: function (transition) {
+    afterModel: function (model, transition) {
       this._super.apply(this, arguments);
       routeLayersService.push(transition);
     },
