@@ -9,7 +9,10 @@ export function initialize (container, application) {
 
     afterModel: function (model, transition) {
       this._super.apply(this, arguments);
-      routeLayersService.push(transition);
+      transition.promise.then(() => {
+        if (transition.isAborted) return;
+        routeLayersService.push(transition);
+      });
     },
 
     _actions: { // @see https://github.com/emberjs/ember.js/issues/5394
