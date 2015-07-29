@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
-var stack = [];
-
 export default Ember.Service.extend({
 
+  stack: [],
   push: function (transition) {
 
+    var stack = this.get('stack');
     var routeLayer = transition.handlerInfos.get('lastObject.handler.routeLayer');
     var exitPoint = {
       routeLayer: routeLayer,
@@ -25,6 +25,7 @@ export default Ember.Service.extend({
   },
 
   pop: function () {
+    var stack = this.get('stack');
     stack.pop(); // discard
     return stack.pop();
   }
