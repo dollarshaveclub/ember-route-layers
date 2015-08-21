@@ -9,6 +9,11 @@ export function initialize (container, application) {
 
     afterModel: function (model, transition) {
       this._super.apply(this, arguments);
+
+      // Leaf route only
+      var leafRouteName = transition.handlerInfos.get('lastObject.handler.routeName');
+      if (this.routeName !== leafRouteName) return;
+
       transition.promise.then(() => {
         if (transition.isAborted) return;
         routeLayersService.push(transition);
