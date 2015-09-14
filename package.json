@@ -1,7 +1,7 @@
 {
   "name": "ember-route-layers",
-  "version": "0.0.3",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "1.0.0",
+  "description": "Wire up your cancel buttons in easy mode.",
   "directories": {
     "doc": "doc",
     "test": "tests"
