@@ -19,7 +19,7 @@ export function initialize (application) {
       });
     },
 
-    _actions: { // @see https://github.com/emberjs/ember.js/issues/5394
+    actions: {
 
       exitRouteLayer: function () {
         var exitPoint = routeLayersService.pop();
