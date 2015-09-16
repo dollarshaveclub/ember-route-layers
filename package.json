@@ -1,6 +1,6 @@
 {
   "name": "ember-route-layers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Wire up your cancel buttons in easy mode.",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "git://github.com/dollarshaveclub/ember-route-layers.git",
   "engines": {
     "node": ">= 0.10.0"
   },
