@@ -22,7 +22,7 @@ export function initialize (container, application) {
       });
     },
 
-    _actions: {
+    actions: {
 
       exitRouteLayer: function () {
         var exitPoint = this.routeLayers.pop();
