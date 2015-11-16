@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "git://github.com/dollarshaveclub/ember-route-layers.git",
+  "repository": "dollarshaveclub/ember-route-layers",
   "engines": {
     "node": ">= 0.10.0"
   },
