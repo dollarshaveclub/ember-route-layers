@@ -1,6 +1,6 @@
 {
   "name": "ember-route-layers",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "description": "Wire up your cancel buttons in easy mode.",
   "directories": {
     "doc": "doc",
@@ -13,9 +13,9 @@
   },
   "repository": "dollarshaveclub/ember-route-layers",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.12.0"
   },
-  "author": "",
+  "author": "Patrick Fisher <patrick@pwfisher.com>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
