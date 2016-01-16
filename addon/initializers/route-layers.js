@@ -1,6 +1,6 @@
 import RouteLayers from 'ember-route-layers/services/route-layers';
 
-export function initialize (container, application) {
+export function initialize (application) {
 
   application.register('service:route-layers', RouteLayers);
   application.inject('route', 'routeLayers', 'service:route-layers');
