@@ -5,6 +5,8 @@ export default Ember.Service.extend({
   stack: [],
   push: function (transition) {
 
+    // console.log('[service:route-layers push]', transition);
+
     var stack = this.get('stack');
     var routeLayer = transition.handlerInfos.get('lastObject.handler.routeLayer');
     var exitPoint = {
@@ -22,6 +24,8 @@ export default Ember.Service.extend({
     }
 
     stack.push(exitPoint);
+
+    // console.log('[routeLayer push] stack', JSON.stringify(stack.map(o => `${o.routeLayer}: ${o.transition.targetName}`)));
   },
 
   pop: function () {
