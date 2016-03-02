@@ -2,7 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
 
-  stack: [],
+  stack: Ember.computed(function() {
+    return Ember.A([]);
+  }),
   push: function (transition) {
 
     // console.log('[service:route-layers push]', transition);
