@@ -10,7 +10,7 @@ This [Ember CLI](http://www.ember-cli.com/) addon makes it trivial to wire up cl
 
 Install the addon and all your routes will get an `exitRouteLayer` action and `routeLayer: 'default'`.
 
-`ember install addon ember-route-layers`
+`ember install ember-route-layers`
 
 Override the `routeLayer` property on leaf routes which are "escapable".
 
