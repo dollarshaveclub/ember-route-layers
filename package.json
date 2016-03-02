@@ -3,7 +3,6 @@
   "version": "2.3.0",
   "description": "Wire up your cancel buttons in easy mode.",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
@@ -11,11 +10,17 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "dollarshaveclub/ember-route-layers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dollarshaveclub/ember-route-layers.git"
+  },
   "engines": {
     "node": ">= 0.12.0"
   },
   "author": "Patrick Fisher <patrick@pwfisher.com>",
+  "contributors": [
+    "Ben Limmer <hello@benlimmer.com>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
