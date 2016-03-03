@@ -25,15 +25,15 @@ export default Ember.Service.extend({
       }
     }
 
-    stack.push(exitPoint);
+    stack.pushObject(exitPoint);
 
     // console.log('[routeLayer push] stack', JSON.stringify(stack.map(o => `${o.routeLayer}: ${o.transition.targetName}`)));
   },
 
   pop: function () {
     var stack = this.get('stack');
-    stack.pop(); // discard
-    return stack.pop();
+    stack.popObject(); // discard
+    return stack.popObject();
   }
 
 });
