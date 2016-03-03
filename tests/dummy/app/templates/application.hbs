@@ -1,8 +1,20 @@
-<div class='route-layers-dummy-app'>
+<div class="route-layers-dummy-app">
   <h2 id="title">Ember Route Layers Test</h2>
+
+  <section class="stack-display">
+    <h4>Current route layer exit point stack</h4>
+    <ol>
+      {{#each routeLayers.stack as |exitPoint|}}
+        <li class="exit-point">
+          Layer: <b>{{exitPoint.routeLayer}}</b><br>
+          Route: <i class="route">{{#each exitPoint.transition.handlerInfos as |info|}}<span>{{ info.name }}</span>{{/each}}</i>
+        </li>
+      {{/each}}
+    </ol>
+  </section>
 
   {{outlet}}
 
-  <br />
-  <button id='exit-route-layer' {{action 'exitRouteLayer'}}>Exit Route Layer</button>
+  <br>
+  <button id="exit-route-layer" {{ action 'exitRouteLayer' }}>Exit Route Layer</button>
 </div>

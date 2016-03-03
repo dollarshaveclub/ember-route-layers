@@ -5,3 +5,12 @@
 #exit-route-layer {
   margin-top: 20px;
 }
+
+.exit-point .route span + span:before {
+  content: '.';
+}
+
+.stack-display {
+  background: #EEE;
+  padding: 1rem;
+}
