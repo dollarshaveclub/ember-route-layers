@@ -1,0 +1,28 @@
+<h4>How does this work?</h4>
+<p>
+  In this example, we have a post route with a dynamic segment, e.g. the url looks
+  like <code>localhost/post/:id</code>. Then, we have a routing structure from the
+  post that dives you into a deep routing structure that looks like this:
+
+  <pre>
+    localhost
+    ├── post
+    │   └── :id
+    │       └── level-1
+    │           └── level-2
+    │               └── level-3
+    └── unrelated-route
+  </pre>
+
+  The inner levels (level-1, level-2, level-3) are all identified with the
+  <code>post-level</code> routeLayer. So, on any of the <code>level-*</code>
+  routes, pressing the "Exit Route Layer" button should take you back one of two
+  places:
+    * The post route (if you've visited it)
+    * The homepage (if you haven't visited the post route)
+    * The <code>unrelated-route</code> if you're in level-2 (because of overridden <code>exitRouteLayerFallback</code>)
+</p>
+
+{{outlet}}
+
+{{#link-to 'post' 1 id='view-post-1'}}View Post 1{{/link-to}}

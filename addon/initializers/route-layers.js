@@ -1,43 +1,48 @@
+import Ember from 'ember';
 import RouteLayers from 'ember-route-layers/services/route-layers';
 
-export function initialize (container, application) {
+const EMBER_MAJOR_VERSION = Ember.VERSION.split('.')[0];
+
+export function initialize () {
+  let application = arguments[1] || arguments[0];
 
   application.register('service:route-layers', RouteLayers);
   application.inject('route', 'routeLayers', 'service:route-layers');
 
-  Ember.Route.reopen({
-
+  const additionalRouteAttributes = {
     routeLayer: 'default',
 
     afterModel: function (model, transition) {
-      this._super.apply(this, arguments);
+      this._super(...arguments);
 
       // Leaf route only
-      var leafRouteName = transition.handlerInfos.get('lastObject.handler.routeName');
-      if (this.routeName !== leafRouteName) return;
+      var leafRouteName = Ember.A(transition.handlerInfos).get('lastObject.handler.routeName');
+      if (this.routeName !== leafRouteName) { return; }
 
       transition.promise.then(() => {
-        if (transition.isAborted) return;
+        if (transition.isAborted) { return; }
         this.routeLayers.push(transition);
       });
     },
+  };
 
-    actions: {
-
-      exitRouteLayer: function () {
-        var exitPoint = this.routeLayers.pop();
-        if (exitPoint) exitPoint.transition.retry();
-        else this.send('exitRouteLayerFallback');
-      },
-
-      exitRouteLayerFallback: function () {
-        this.transitionTo('index');
+  const actionHashName = EMBER_MAJOR_VERSION === '1' ? '_actions' : 'actions';
+  additionalRouteAttributes[actionHashName] = {
+    exitRouteLayer: function () {
+      var exitPoint = this.routeLayers.pop();
+      if (exitPoint) {
+        exitPoint.transition.retry();
+      } else {
+        this.send('exitRouteLayerFallback');
       }
+    },
 
+    exitRouteLayerFallback: function () {
+      this.transitionTo('index');
     }
+  };
 
-  });
-
+  Ember.Route.reopen(additionalRouteAttributes);
 }
 
 export default {
