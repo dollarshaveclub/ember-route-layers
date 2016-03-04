@@ -33,7 +33,7 @@ export function initialize () {
       if (exitPoint) {
         exitPoint.transition.retry();
       } else {
-        if (this.get('router.router.activeTransition.sequence') === 0) {
+        if (this.get('router.router.currentHandlerInfos') === null) {
           // Initial transition must complete before we can send an action.
           this.get('router.router.activeTransition').then(() => {
             this.send('exitRouteLayerFallback');
