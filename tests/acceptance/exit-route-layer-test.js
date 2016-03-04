@@ -90,3 +90,11 @@ test('goes to the unrelated-route from level-2 (overridden exitRouteLayerFallbac
     assert.equal(currentURL(), '/unrelated-route');
   });
 });
+
+test('it can exitRouteLayer on the first transition', function(assert) {
+  visit('/auto-exited-route');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/');
+  });
+});

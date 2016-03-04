@@ -16,6 +16,7 @@ Router.map(function() {
     });
   });
   this.route('unrelated-route');
+  this.route('auto-exited-route');
 });
 
 export default Router;
