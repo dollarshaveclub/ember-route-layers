@@ -33,7 +33,14 @@ export function initialize () {
       if (exitPoint) {
         exitPoint.transition.retry();
       } else {
-        this.send('exitRouteLayerFallback');
+        if (this.get('router.router.activeTransition.sequence') === 0) {
+          // Initial transition must complete before we can send an action.
+          this.get('router.router.activeTransition').then(() => {
+            this.send('exitRouteLayerFallback');
+          });
+        } else {
+          this.send('exitRouteLayerFallback');
+        }
       }
     },
 
