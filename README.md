@@ -1,6 +1,7 @@
 # Ember-route-layers
 [![Ember Observer Score](http://emberobserver.com/badges/ember-route-layers.svg)](http://emberobserver.com/addons/ember-route-layers)
 [![Build Status](https://travis-ci.org/dollarshaveclub/ember-route-layers.svg?branch=master)](https://travis-ci.org/dollarshaveclub/ember-route-layers)
+[![Coverage Status](https://coveralls.io/repos/dollarshaveclub/ember-route-layers/badge.svg)](https://coveralls.io/github/dollarshaveclub/ember-route-layers)
 
 This [Ember CLI](http://www.ember-cli.com/) addon makes it trivial to wire up close icons and cancel buttons.
 

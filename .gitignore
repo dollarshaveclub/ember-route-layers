@@ -9,9 +9,14 @@
 /bower_components
 
 # misc
+*.swp
 /.sass-cache
 /connect.lock
 /coverage/*
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+#coverage
+coverage.json
+lcov.dat
