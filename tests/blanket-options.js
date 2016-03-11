@@ -9,7 +9,7 @@ var options = {
   cliOptions: {
    lcovOptions: {
      outputFile: 'lcov.dat',
-     renamer: function (moduleName) { return moduleName.replace(/^ember-uni-form/, 'addon') + '.js'; }
+     renamer: function (moduleName) { return moduleName.replace(/^ember-route-layers/, 'addon') + '.js'; }
    },
    reporters: ['lcov'],
    autostart: true
