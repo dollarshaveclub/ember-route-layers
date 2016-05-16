@@ -15,7 +15,7 @@ export function initialize () {
     afterModel: function (model, transition) {
       this._super(...arguments);
 
-      if (!model || !transition) { return; }
+      if (!transition) { return; }
 
       // Leaf route only
       var leafRouteName = Ember.A(transition.handlerInfos).get('lastObject.handler.routeName');
