@@ -20,11 +20,11 @@ export default Ember.Service.extend({
     if (routeLayer === 'default') stack.length = 0;
 
     // Transition to layer in stack: remove it and any above
-    for (var i = 0; i < stack.length; i++) {
-      if (stack[i].routeLayer === routeLayer) {
-        stack.length = i;
-      }
-    }
+    // for (var i = 0; i < stack.length; i++) {
+    //   if (stack[i].routeLayer === routeLayer) {
+    //     stack.length = i;
+    //   }
+    // }
 
     stack.pushObject(exitPoint);
 
