@@ -23,7 +23,8 @@ export function initialize () {
 
       transition.promise.then(() => {
         if (transition.isAborted) { return; }
-        this.routeLayers.push(transition);
+        if (transition.urlMethod === 'replace') this.routeLayers.replace(transition);
+        else this.routeLayers.push(transition);
       });
     },
   };
