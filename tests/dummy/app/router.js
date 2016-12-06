@@ -15,6 +15,10 @@ Router.map(function() {
       });
     });
   });
+  this.route('replace-test', function() {
+    this.route('will-be-replaced');
+    this.route('with-this-target');
+  });
   this.route('unrelated-route');
   this.route('auto-exited-route');
 });

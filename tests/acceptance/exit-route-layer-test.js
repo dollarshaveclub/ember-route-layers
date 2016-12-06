@@ -98,3 +98,14 @@ test('it can exitRouteLayer on the first transition', function(assert) {
     assert.equal(currentURL(), '/');
   });
 });
+
+test('it replaces transition in stack on replaceWith call', function(assert) {
+  visit('/replace-test');
+  click('a#will-be-replaced');
+  click('#do-replace-with');
+  click('#exit-route-layer');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/replace-test');
+  });
+});
