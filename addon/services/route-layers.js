@@ -35,6 +35,11 @@ export default Ember.Service.extend({
     var stack = this.get('stack');
     stack.popObject(); // discard
     return stack.popObject();
-  }
+  },
+
+  replace: function (transition) {
+    this.get('stack').popObject(); // discard
+    this.push(transition);
+  },
 
 });
