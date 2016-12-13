@@ -1,6 +1,6 @@
 {
   "name": "ember-route-layers",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Wire up your cancel buttons in easy mode.",
   "directories": {
     "test": "tests"
