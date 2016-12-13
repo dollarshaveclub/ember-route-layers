@@ -11,6 +11,13 @@ export default Ember.Service.extend({
     // console.log('[service:route-layers push]', transition);
 
     var stack = this.get('stack');
+
+    if (transition.urlMethod === 'replace') {
+      var replacedId = transition.sequence - 1;
+      var lastId = stack.get('lastObject.transition.sequence');
+      if (replacedId === lastId) stack.popObject();
+    }
+
     var routeLayer = transition.handlerInfos.get('lastObject.handler.routeLayer');
     var exitPoint = {
       routeLayer: routeLayer,
@@ -35,11 +42,6 @@ export default Ember.Service.extend({
     var stack = this.get('stack');
     stack.popObject(); // discard
     return stack.popObject();
-  },
-
-  replace: function (transition) {
-    this.get('stack').popObject(); // discard
-    this.push(transition);
   },
 
 });
