@@ -3,7 +3,7 @@ import RouteLayers from 'ember-route-layers/services/route-layers';
 
 const EMBER_MAJOR_VERSION = Ember.VERSION.split('.')[0];
 
-export function initialize () {
+export function initialize() {
   let application = arguments[1] || arguments[0];
 
   application.register('service:route-layers', RouteLayers);
@@ -15,7 +15,7 @@ export function initialize () {
     afterModel: function (model, transition) {
       this._super(...arguments);
 
-      if (!transition) { return; }
+      if (!transition || !transition.promise) { return; }
 
       // Leaf route only
       var leafRouteName = Ember.A(transition.handlerInfos).get('lastObject.handler.routeName');
