@@ -4,7 +4,7 @@ import RouteLayers from 'ember-route-layers/services/route-layers';
 const EMBER_MAJOR_VERSION = Ember.VERSION.split('.')[0];
 
 export function initialize() {
-  let application = arguments[1] || arguments[0];
+  const application = arguments[1] || arguments[0]; // eslint-disable-line prefer-rest-params
 
   application.register('service:route-layers', RouteLayers);
   application.inject('route', 'routeLayers', 'service:route-layers');
@@ -12,7 +12,7 @@ export function initialize() {
   const additionalRouteAttributes = {
     routeLayer: 'default',
 
-    afterModel: function (model, transition, ...args) {
+    afterModel(model, transition, ...args) {
       this._super(model, transition, ...args);
       if (!transition || !transition.promise) { return; }
 
@@ -21,7 +21,7 @@ export function initialize() {
 
     pushRouteLayer(transition) {
       // Leaf route only
-      var leafRouteName = Ember.A(transition.handlerInfos).get('lastObject.handler.routeName');
+      const leafRouteName = Ember.A(transition.handlerInfos).get('lastObject.handler.routeName');
       if (this.routeName !== leafRouteName) { return; }
 
       transition.promise.then(() => {
@@ -32,26 +32,25 @@ export function initialize() {
   };
 
   const actionHashName = EMBER_MAJOR_VERSION === '1' ? '_actions' : 'actions';
+
   additionalRouteAttributes[actionHashName] = {
-    exitRouteLayer: function () {
-      var exitPoint = this.routeLayers.pop();
+    exitRouteLayer() {
+      const exitPoint = this.routeLayers.pop();
       if (exitPoint) {
         exitPoint.transition.retry();
-      } else {
-        if (this.get('router.router.currentHandlerInfos') === null) {
-          // Initial transition must complete before we can send an action.
-          this.get('router.router.activeTransition').then(() => {
-            this.send('exitRouteLayerFallback');
-          });
-        } else {
+      } else if (this.get('router.router.currentHandlerInfos') === null) {
+        // Initial transition must complete before we can send an action.
+        this.get('router.router.activeTransition').then(() => {
           this.send('exitRouteLayerFallback');
-        }
+        });
+      } else {
+        this.send('exitRouteLayerFallback');
       }
     },
 
-    exitRouteLayerFallback: function () {
+    exitRouteLayerFallback() {
       this.transitionTo('index');
-    }
+    },
   };
 
   Ember.Route.reopen(additionalRouteAttributes);
@@ -59,5 +58,5 @@ export function initialize() {
 
 export default {
   name: 'route-layers',
-  initialize: initialize
+  initialize,
 };
