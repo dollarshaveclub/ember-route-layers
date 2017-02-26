@@ -12,18 +12,21 @@ export function initialize() {
   const additionalRouteAttributes = {
     routeLayer: 'default',
 
-    afterModel: function (model, transition) {
-      this._super(...arguments);
-
+    afterModel: function (model, transition, ...args) {
+      this._super(model, transition, ...args);
       if (!transition || !transition.promise) { return; }
 
+      this.pushRouteLayer(transition);
+    },
+
+    pushRouteLayer(transition) {
       // Leaf route only
       var leafRouteName = Ember.A(transition.handlerInfos).get('lastObject.handler.routeName');
       if (this.routeName !== leafRouteName) { return; }
 
       transition.promise.then(() => {
-        if (transition.isAborted) { return; }
-        else this.routeLayers.push(transition);
+        if (transition.isAborted) return;
+        this.routeLayers.push(transition);
       });
     },
   };
