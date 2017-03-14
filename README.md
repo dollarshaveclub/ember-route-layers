@@ -1,4 +1,6 @@
 # Ember-route-layers
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/dollarshaveclub/ember-route-layers.svg)](https://greenkeeper.io/)
 [![Ember Observer Score](http://emberobserver.com/badges/ember-route-layers.svg)](http://emberobserver.com/addons/ember-route-layers)
 [![Build Status](https://travis-ci.org/dollarshaveclub/ember-route-layers.svg?branch=master)](https://travis-ci.org/dollarshaveclub/ember-route-layers)
 [![Coverage Status](https://coveralls.io/repos/github/dollarshaveclub/ember-route-layers/badge.svg?branch=master)](https://coveralls.io/github/dollarshaveclub/ember-route-layers?branch=master)
