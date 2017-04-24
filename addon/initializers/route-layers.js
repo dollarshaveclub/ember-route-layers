@@ -11,6 +11,7 @@ export function initialize() {
 
   const additionalRouteAttributes = {
     routeLayer: 'default',
+    routeLayerFallback: 'index',
 
     afterModel(model, transition, ...args) {
       this._super(model, transition, ...args);
@@ -49,7 +50,7 @@ export function initialize() {
     },
 
     exitRouteLayerFallback() {
-      this.transitionTo('index');
+      this.transitionTo(this.get('routeLayerFallback'));
     },
   };
 

@@ -91,6 +91,15 @@ test('goes to the unrelated-route from level-2 (overridden exitRouteLayerFallbac
   });
 });
 
+test('goes to the unrelated-route from level-2-2 (overridden routeLayerFallback property)', function(assert) {
+  visit('/post/1/level-1/level-2-2');
+  click('#exit-route-layer');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/unrelated-route');
+  });
+});
+
 test('it can exitRouteLayer on the first transition', function(assert) {
   visit('/auto-exited-route');
 

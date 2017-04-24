@@ -13,6 +13,7 @@ Router.map(function() {
       this.route('level-2', function() {
         this.route('level-3');
       });
+      this.route('level-2-2');
     });
   });
   this.route('replace-test', function() {
